@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {AppErrorHandlerService} from './app-error-handler.service';
 
 import { AppComponent } from './app.component';
 import { HotToastModule } from '@ngneat/hot-toast';
@@ -12,7 +13,11 @@ import { HotToastModule } from '@ngneat/hot-toast';
     BrowserModule,
     HotToastModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: ErrorHandler, useClass: AppErrorHandlerService
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
